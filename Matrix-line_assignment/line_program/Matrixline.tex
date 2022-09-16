@@ -1,0 +1,142 @@
+\def\mytitle{MATRICES USING PYTHON}
+\def\myauthor{YADATI KRISHNA}
+\def\contact{yadati.krishna@gmail.com}
+\def\mymodule{Future Wireless Communication (FWC)}
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper,outer=1.5cm,inner=1.5cm,top=1.75cm,bottom=1.5cm]{geometry}
+\twocolumn
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage{lmodern}
+\usepackage{tikz}
+	\usepackage{physics}
+%\documentclass[tikz, border=2mm]{standalone}
+\usepackage{karnaugh-map}
+%\documentclass{article}
+\usepackage{tabularx}
+\usepackage{circuitikz}
+\usetikzlibrary{calc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{watermark}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{titlesec}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\titlespacing{\subsection}{1pt}{\parskip}{3pt}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\paragraph}{0pt}{\parskip}{\parskip}
+\newcommand{\figuremacro}[5]
+
+\begin{document}
+
+\title{\mytitle}
+\author{\myauthor\hspace{1em}\\\contact\\FWC22036\hspace{6.5em}IITH\hspace{0.5em}\mymodule\hspace{6em}ASSIGN-4}
+\date{}
+	\maketitle
+		\begin{figure}
+	\tableofcontents
+\vspace{10mm}
+   \section{Problem}
+
+   Given $ AP\: || \: BQ\: || CR $  . Prove that\\ 
+   ar(AQC)= ar(PBR)\\
+  
+       \centering
+        \includegraphics[scale=1]{../../../Downloads/diag_1.png}  
+        \label{fig:2}
+    \end{figure}
+   \section{Solution}
+   \textbf{Theory:}\\
+   Given $ AP\: || \: BQ\: || CR $ \\
+\textbf{To Prove:} Ar(AQC)=Ar(PBR) \\
+$\Delta$ BQA and $\Delta$ BQP lies on same base  and are between same parallel BQ and AP\\
+$\therefore$ Ar($\Delta$ BQA)=Ar($\Delta$ BQP)......(1)\\ 
+\textbf{Theorem} : Two triangles on the same base (or equal bases) and between the same parallels are equal in area.
+\begin{center}
+$\therefore$ Ar($\Delta$ BQC)=Ar($\Delta$ BQR)......(2)\\ 
+\end{center}
+\textbf{To Prove:}  Ar(AQC)=Ar(PBR)\\
+Add (1) to (2) \\
+Ar($\Delta$BQA)+Ar(BQC)=Ar($\Delta$BQP)+Ar(BQR)
+\begin{center}
+$\therefore$ Ar(AQC)=Ar(PBR)     \\
+Hence, Proved \\
+\
+\\
+\
+\\
+\end{center}
+\vspace{3mm}
+\textbf{Termux commands :}
+\begin{lstlisting}
+python3 matrixline.py
+\end{lstlisting}
+
+
+The input parameters for this construction are 
+\begin{center}
+\begin{tabular}{|c|c|c|}
+	\hline
+	\textbf{Symbol}&\textbf{Value}&\textbf{Description}\\
+	\hline
+	k&1&AB\\
+	\hline
+	c&8&CA\\
+	\hline
+	a&12&CR\\
+	\hline
+	p2&4&AP\\
+	\hline
+	${\theta}$& $\pi/3$&$ \angle $AC\\  
+	\hline
+	C&$\
+	\begin{pmatrix}
+		0 \\
+		0 \\
+	\end{pmatrix}$%
+	&Point C\\
+	
+	\hline
+\end{tabular}
+\end{center}
+\textbf{To Prove:} Ar(AQC)=Ar(PBR)
+  %	\begin{align}
+	%		\vec{C} &= \myvec{0 \\ 0}, \vec{E}=\myvec{-5 \\ 3}\\
+	%			\vec{F} &= \myvec{3 \\ 0}, \vec{D}=\myvec{-3 \\ 0}
+	%	\end{align}
+		\begin{center}
+	v1=A-C\\
+	v2=A-Q\\
+	\vspace{3mm}
+	Area of the triangle $\Delta$AQC is given by \\
+Ar($\Delta$AQC) =$\frac{1}{2}$$\norm{\vec{v1}\times\vec{v2}}$............(2)\\
+\vspace{3mm}
+v3=R-P\\
+	v4=R-B\\
+	\vspace{3mm}
+		Area of the triangle $\Delta$PBR is given by \\
+ Ar($\Delta$PBR) =$\frac{1}{2}$$\norm{\vec{v3}\times\vec{v4}}$...............(3)
+	\end{center}
+	\begin{center}
+$\therefore$ Ar(AQC)=Ar(PBR)\\
+
+\end{center}
+\vspace{10mm}
+The below python code realizes the above construction:	\\
+
+\url{https://github.com/KrishnaYadati/Assignments/tree/main/Matrix-line_ assignment/line_program}
+ \section{Construction}
+ 	\begin{center}
+    \includegraphics[scale=1]{../../python/figs/matrix.pdf} 
+     Figure of Construction
+  	\end{center}
+  	  
+\bibliographystyle{ieeetr}
+\end{document}
+
