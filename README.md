@@ -20,8 +20,16 @@
  
  1.Line Assignment
  
+ https://github.com/KrishnaYadati/Assignments/tree/main/Matrix-line_assignment
+ 
  2.Circle Assignment
+ 
+ https://github.com/KrishnaYadati/Assignments/tree/main/Matrix_circle_assignment
  
  3.Conic Assignment
  
+ https://github.com/KrishnaYadati/Assignments/tree/main/Matrix_conic_assignment
+ 
 # Python Optimazion
+
+https://github.com/KrishnaYadati/Assignments/tree/main/optimization
