@@ -33,3 +33,7 @@
 #### Python Optimazion
 
 https://github.com/KrishnaYadati/Assignments/tree/main/optimization
+
+#### ARM
+#### FPGA
+#### IOT
