@@ -35,5 +35,8 @@
 https://github.com/KrishnaYadati/Assignments/tree/main/optimization
 
 #### ARM
+https://github.com/KrishnaYadati/Assignments/tree/main/ARM
 #### FPGA
+https://github.com/KrishnaYadati/Assignments/tree/main/FPGA
 #### IOT
+https://github.com/KrishnaYadati/Assignments/tree/main/IOT
