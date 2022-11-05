@@ -1,0 +1,160 @@
+\def\mytitle{IMPLEMENTATION OF POS EXPRESSION IN ARM}
+\def\myauthor{YADATI KRISHNA}
+\def\contact{yadati.krishna@gmail.com}
+\def\mymodule{Future Wireless Communication (FWC)}
+\documentclass[10pt, a4paper]{article}
+\usepackage[a4paper,outer=1.5cm,inner=1.5cm,top=1.75cm,bottom=1.5cm]{geometry}
+\twocolumn
+\usepackage{graphicx}
+\graphicspath{{./images/}}
+\usepackage[colorlinks,linkcolor={black},citecolor={blue!80!black},urlcolor={blue!80!black}]{hyperref}
+\usepackage[parfill]{parskip}
+\usepackage{lmodern}
+\usepackage{tikz}
+%\documentclass[tikz, border=2mm]{standalone}
+\usepackage{karnaugh-map}
+%\documentclass{article}
+\usepackage{tabularx}
+\usepackage{circuitikz}
+\usetikzlibrary{calc}
+\usepackage{enumitem}
+
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{watermark}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{titlesec}
+
+\titlespacing{\subsection}{1pt}{\parskip}{3pt}
+\titlespacing{\subsubsection}{0pt}{\parskip}{-\parskip}
+\titlespacing{\paragraph}{0pt}{\parskip}{\parskip}
+\newcommand{\figuremacro}[5]{
+   % \begin{figure}[#1]
+      %  \centering
+       % \includegraphics[width=#5\columnwidth]{#2}
+        %\caption[#3]{\textbf{#3}#4}
+        %\label{fig:#2}
+    %\end{figure}
+}
+
+\lstset{
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+
+%\thiswatermark{\centering \put(181,-119.0){\includegraphics[scale=0.13]{iith_logo3}} }
+\title{\mytitle}
+\author{\myauthor\hspace{1em}\\\contact\\FWC22036\hspace{6.5em}IITH\hspace{0.5em}\mymodule\hspace{6em}ASSIGNMENT-8}
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\begin{abstract}
+	    This manual shows how to represent the K-MAP for POS expression for the function "G" shown in below truth table. \\
+ 
+ \centering
+  \begin{center}
+ \begin{tabular}{ |c |c |c |c |}
+
+ 
+ 
+ \hline
+ U  &  V  &  W  &  \hspace{3mm}G\\
+ \hline
+ 0  &  0  &  0  &  \hspace{3mm}1\\
+ \hline
+ 0  &  0  &  1  &  \hspace{3mm}0\\
+ \hline
+ 0  &  1  &  0  &  \hspace{3mm}1\\
+ \hline
+ 0  &  1  &  1  & \hspace{3mm}0\\
+ \hline
+ 1  &  0  &  0  & \hspace{3mm}1\\
+ \hline
+ 1  &  0  &  1  & \hspace{3mm}0\\
+ \hline
+ 1  &  1  &  0  & \hspace{3mm}0\\
+ \hline
+ 1  &  1  &  1  &  \hspace{3mm}1\\
+ \hline
+ \end{tabular}
+ \end{center}
+	  	\end{abstract}
+	
+
+	\section{Components}
+  \begin{tabularx}{0.48\textwidth} { 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X 
+  | >{\centering\arraybackslash}X | }
+\hline
+ \textbf{Components}& \textbf{Values} & \textbf{Quantity}\\
+\hline
+Vaman Board &  & 1 \\  
+\hline
+JumperWires& M-F & 5 \\ 
+\hline
+Breadboard &  & 1 \\
+\hline
+USB-C cable&  & 1 \\
+\hline
+\end{tabularx}
+
+   \section{Implementation}
+
+\begin{center}
+     \begin{karnaugh-map}[4][2][1][$VW$][$U$]
+        \minterms{0,2,4,7}
+        \maxterms{1,3,5,6}
+        \implicant{1}{5}
+        \implicant{1}{3}
+        \implicant{6}{6}
+    \end{karnaugh-map}
+\end{center}
+\begin{center}
+K-map
+\end{center}
+    \paragraph{Karnugh Map :}
+The  minimized expression using the K-map can be expressed as
+\begin{equation}
+G=(V+W')(U+W')(U'+V'+W) 
+\end{equation}
+
+The code below realizes the Boolean logic for G  using 5V,GND of Vaman Board
+\\
+2,4,6 GPIO Pins of Vaman Board are configured as input pins and the required Logic for U,V,W are drawn from 5V (Digital '1'),GND (Digital '0'). Built in led at 22nd pin will glow based on G satisfying the Truth table.
+\begin{center}
+\fbox{\parbox{8.5cm}{\url{https://github.com/KrishnaYadati/Assignments/blob/main/ARM/codes/src/main.c}}}
+\end{center}
+\section{Setup}
+\begin{enumerate}
+\item Connect the Vaman to the Laptop through USB.
+\item There is a button and an LED to the left of the USB port on the Vaman.There is another button to the right of the LED.
+\item Press the right button first and immediately press the left button.The LED will be blinking green.The Vaman is now in bootloader mode.
+\end{enumerate}
+\subsection{The steps for implementation:}
+\begin{enumerate}
+\item Login to termux-ubuntu on the android device and execute the following commands:\\
+Make sure that the required installation of pygmy-sdk had done prior executing below commands
+\begin{lstlisting}
+proot-distro login debian
+cd  /data/data/com.termux/files/home/
+mkdir arm
+svn co https://github.com/KrishnaYadati/Assignments/trunk/arm/codes
+\end{lstlisting}
+\begin{lstlisting}
+cd codes/GCC_Project
+make
+scp /data/data/com.termux/files/home/arm/codes/GCC_Project/output/bin/codes.bin usernameofpc@IPaddress:/home/username
+\end{lstlisting}
+Make sure that the appropriate username,IP address of the Laptop is given in the above command.
+\item Now execute the following commands on the Laptop terminal\\
+Make sure that required installation of programmer application and modification of bash file had done prior executing below command
+\begin{lstlisting}
+bash flash.sh codes.bin
+\end{lstlisting}
+\item After finishing the process of flashing with the programmer application press the button to the right of the USB port to reset. Vaman is now flashed with our source code
+\end{enumerate}
+\end{document}
